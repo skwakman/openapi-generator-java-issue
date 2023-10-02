@@ -1,0 +1,114 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "",
+    "title": "Example schema",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://localhost",
+      "description": "some url"
+    }
+  ],
+  "security": [],
+  "paths": {
+    "/some-path": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseContent"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResponseContent": {
+        "discriminator": {
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Subtitle"
+          },
+          {
+            "$ref": "#/components/schemas/Title"
+          },
+          {
+            "$ref": "#/components/schemas/Paragraph"
+          }
+        ]
+      },
+      "Title": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "title"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ],
+        "additionalProperties": false
+      },
+      "Subtitle": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "subtitle"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ],
+        "additionalProperties": false
+      },
+      "Paragraph": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "paragraph"
+            ]
+          },
+          "content": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "type",
+          "content"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}
