@@ -39,10 +39,10 @@
         },
         "oneOf": [
           {
-            "$ref": "#/components/schemas/Subtitle"
+            "$ref": "#/components/schemas/Title"
           },
           {
-            "$ref": "#/components/schemas/Title"
+            "$ref": "#/components/schemas/Subtitle"
           },
           {
             "$ref": "#/components/schemas/Paragraph"
